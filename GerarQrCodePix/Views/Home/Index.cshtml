@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <form action="@Url.Action("Index", "Home" )" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+
+        <div class="qrcode" style="width: 250px; height: 250px;border-radius: 20px;  text-align: center; margin: 25px auto; background-color: #f9a3a3; color: #000000;">
+            <img style=" border-radius: 8px;width: 90%;  margin-top: 13px;" id="qr" src="@ViewBag.qrcode">
+        </div>
+
+        <input class="form-control" value="@ViewBag.copiaecola" style="display:flex; margin: auto; justify-content:center" />
+        <br />
+
+        <div style="display:flex; margin: auto; justify-content:center">
+            <input class="form-control" id="valor" name="valor" placeholder="Coloque o valor em reais" style="width: auto;"/>
+            <input class="btn btn-primary" type="submit" value="Gerar"  style=" margin-left: 2%;"/>
+        </div>
+        
+    </form>
+
+    <input class="btn btn-default" value="⚙️" data-toggle="modal" data-target="#myModal" style="width: 8%; text-align: center;" />
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                </div>
+
+                <div class="modal-body">
+
+                    <form action="@Url.Action("Dados", "Home" )" method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+
+                        <label for="nome" style="display:flex; margin: auto; justify-content:center">Nome</label>
+                        <input class="form-control" id="nome" name="nome" value="@ViewBag.nome" style="display:flex; margin: auto; justify-content:center" />
+                        <br />
+                        <label for="cidade" style="display:flex; margin: auto; justify-content:center">Cidade</label>
+                        <input class="form-control" id="cidade" name="cidade" value="@ViewBag.cidade" style="display:flex; margin: auto; justify-content:center" />
+                        <br />
+                        <label for="chave" style="display:flex; margin: auto; justify-content:center">Chave</label>
+                        <input class="form-control" id="chave" name="chave" value="@ViewBag.chave" style="display:flex; margin: auto; justify-content:center" />
+
+                        <input class="btn btn-primary" type="submit" value="Salvar" style="display:flex; margin: auto; justify-content:center" />
+                    </form>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
